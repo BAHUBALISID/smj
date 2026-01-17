@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing - Shree Mahakaleshwar Jewellers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo.png" alt="Logo" class="logo">
+            <h2>Mahakaleshwar Jewellers</h2>
+        </div>
+        <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="billing.html" class="menu-item active">
+                <i class="fas fa-receipt"></i>
+                <span>Billing</span>
+            </a>
+            <a href="exchange.html" class="menu-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Exchange</span>
+            </a>
+            <a href="pending.html" class="menu-item">
+                <i class="fas fa-clock"></i>
+                <span>Pending Bills</span>
+            </a>
+            <a href="customers.html" class="menu-item">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+            <a href="inventory.html" class="menu-item">
+                <i class="fas fa-boxes"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="reports.html" class="menu-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reports</span>
+            </a>
+            <a href="admin.html" class="menu-item">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+            </a>
+            <a href="settings.html" class="menu-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <p>Professional Billing System</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search bills, customers...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+                <div class="search-results"></div>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">A</div>
+                <div class="user-details">
+                    <div class="user-name" id="userName">Admin</div>
+                    <div class="user-role" id="userRole">admin</div>
+                </div>
+                <button class="btn btn-secondary btn-small" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <div class="page-header">
+                <h1 class="page-title"><i class="fas fa-receipt"></i> Billing</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" id="saveBillBtn">
+                        <i class="fas fa-save"></i> Save Bill
+                    </button>
+                    <button class="btn btn-secondary" id="printBillBtn">
+                        <i class="fas fa-print"></i> Print
+                    </button>
+                    <button class="btn btn-danger" id="clearBillBtn">
+                        <i class="fas fa-trash"></i> Clear
+                    </button>
+                </div>
+            </div>
+
+            <!-- Customer Information -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-user"></i> Customer Information</h3>
+                    <div>
+                        <button class="btn btn-secondary btn-small" id="searchCustomerBtn">
+                            <i class="fas fa-search"></i> Search Customer
+                        </button>
+                        <button class="btn btn-danger btn-small" id="clearCustomerBtn">
+                            <i class="fas fa-times"></i> Clear
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="customerName"><i class="fas fa-user"></i> Customer Name *</label>
+                            <input type="text" id="customerName" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="customerPhone"><i class="fas fa-phone"></i> Phone Number *</label>
+                            <input type="tel" id="customerPhone" required>
+                        </div>
+                        <div class="input-group">
+                            <label for="customerPhoneAlt"><i class="fas fa-phone-alt"></i> Alternate Phone</label>
+                            <input type="tel" id="customerPhoneAlt">
+                        </div>
+                        <div class="input-group">
+                            <label for="customerAadhaar"><i class="fas fa-id-card"></i> Aadhaar Number</label>
+                            <input type="text" id="customerAadhaar">
+                        </div>
+                        <div class="input-group">
+                            <label for="customerPAN"><i class="fas fa-id-card"></i> PAN Number</label>
+                            <input type="text" id="customerPAN">
+                        </div>
+                        <div class="input-group">
+                            <label for="customerGST"><i class="fas fa-receipt"></i> GST Number</label>
+                            <input type="text" id="customerGST">
+                        </div>
+                        <div class="input-group">
+                            <label for="customerDOB"><i class="fas fa-birthday-cake"></i> Date of Birth</label>
+                            <input type="date" id="customerDOB">
+                        </div>
+                        <div class="input-group">
+                            <label for="customerAddress"><i class="fas fa-map-marker-alt"></i> Address</label>
+                            <textarea id="customerAddress" rows="2"></textarea>
+                        </div>
+                        <div class="input-group">
+                            <label for="customerNotes"><i class="fas fa-sticky-note"></i> Notes</label>
+                            <textarea id="customerNotes" rows="2"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bill Information -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-file-invoice"></i> Bill Information</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="billType"><i class="fas fa-tag"></i> Bill Type</label>
+                            <select id="billType">
+                                <option value="normal">Normal Sale</option>
+                                <option value="advance">Advance Booking</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="gstType"><i class="fas fa-percentage"></i> GST Type</label>
+                            <select id="gstType">
+                                <option value="none">No GST</option>
+                                <option value="intra_state">Intra-State (CGST+SGST)</option>
+                                <option value="inter_state">Inter-State (IGST)</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="gstNumber"><i class="fas fa-receipt"></i> GST Number</label>
+                            <input type="text" id="gstNumber">
+                        </div>
+                        <div class="input-group" id="businessFields" style="display: none;">
+                            <label for="businessName"><i class="fas fa-building"></i> Business Name</label>
+                            <input type="text" id="businessName">
+                        </div>
+                        <div class="input-group" id="businessFields" style="display: none;">
+                            <label for="businessAddress"><i class="fas fa-map-marker-alt"></i> Business Address</label>
+                            <textarea id="businessAddress" rows="2"></textarea>
+                        </div>
+                    </div>
+
+                    <div id="advanceFields" style="display: none; margin-top: 20px;">
+                        <h4><i class="fas fa-calendar-alt"></i> Advance Booking Details</h4>
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="paidAmount"><i class="fas fa-money-bill-wave"></i> Paid Amount</label>
+                                <input type="number" id="paidAmount" step="0.01" min="0">
+                            </div>
+                            <div class="input-group">
+                                <label for="remainingAmount"><i class="fas fa-clock"></i> Remaining Amount</label>
+                                <input type="text" id="remainingAmount" readonly>
+                            </div>
+                            <div class="input-group">
+                                <label for="advanceLockDate"><i class="fas fa-lock"></i> Rate Lock Until</label>
+                                <input type="date" id="advanceLockDate">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bill Items -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-shopping-cart"></i> Bill Items</h3>
+                    <button class="btn btn-primary" id="addItemBtn">
+                        <i class="fas fa-plus"></i> Add Item
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div id="itemsContainer">
+                        <!-- Items will be dynamically added here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment Information -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-credit-card"></i> Payment Information</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-grid">
+                        <div class="input-group">
+                            <label for="paymentMode"><i class="fas fa-credit-card"></i> Payment Mode</label>
+                            <select id="paymentMode">
+                                <option value="cash">Cash</option>
+                                <option value="card">Card</option>
+                                <option value="upi">UPI</option>
+                                <option value="bank_transfer">Bank Transfer</option>
+                                <option value="cheque">Cheque</option>
+                            </select>
+                        </div>
+                        <div class="input-group">
+                            <label for="totalAmount"><i class="fas fa-calculator"></i> Total Amount</label>
+                            <input type="text" id="totalAmount" readonly>
+                        </div>
+                        <div class="input-group">
+                            <label for="billNotes"><i class="fas fa-sticky-note"></i> Bill Notes (Printable)</label>
+                            <textarea id="billNotes" rows="3"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculations Summary -->
+            <div class="calculations-summary">
+                <h3><i class="fas fa-calculator"></i> Bill Summary</h3>
+                <div class="summary-grid">
+                    <div class="summary-item">
+                        <span class="summary-label">Total Gross Weight (GM):</span>
+                        <span class="summary-value" id="summaryGrossWeight">0.000</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Total Net Weight (GM):</span>
+                        <span class="summary-value" id="summaryNetWeight">0.000</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Total Metal Value:</span>
+                        <span class="summary-value" id="summaryMetalValue">₹0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Total Making Charges:</span>
+                        <span class="summary-value" id="summaryMakingCharges">₹0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Total Discount:</span>
+                        <span class="summary-value" id="summaryDiscount">₹0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Total Stone Charge:</span>
+                        <span class="summary-value" id="summaryStoneCharge">₹0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Total HUID Charge:</span>
+                        <span class="summary-value" id="summaryHuidCharge">₹0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Taxable Value:</span>
+                        <span class="summary-value" id="summaryTaxableValue">₹0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">CGST:</span>
+                        <span class="summary-value" id="summaryCGST">₹0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">SGST:</span>
+                        <span class="summary-value" id="summarySGST">₹0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">IGST:</span>
+                        <span class="summary-value" id="summaryIGST">₹0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span class="summary-label">Total Amount:</span>
+                        <span class="summary-value" id="summaryTotalAmount">₹0.00</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Search Modal -->
+    <div class="modal" id="customerSearchModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Search Customer</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label>Search by Name or Phone</label>
+                    <input type="text" id="customerSearchInput" placeholder="Enter name or phone number...">
+                </div>
+                <div id="customerSearchResults" class="search-results-container" style="max-height: 400px; overflow-y: auto; margin-top: 20px;"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Inventory Search Modal -->
+    <div class="modal" id="inventoryModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Inventory Search</h3>
+                <button class="modal-close">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="input-group">
+                    <label>Search Inventory Items</label>
+                    <input type="text" id="inventorySearch" placeholder="Enter item name...">
+                </div>
+                <div id="inventoryResults" style="margin-top: 20px; max-height: 400px; overflow-y: auto;"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/billing.js"></script>
+</body>
+</html>
