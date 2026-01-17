@@ -1,0 +1,123 @@
+@media print {
+    .sidebar,
+    .topbar,
+    .page-actions,
+    .btn,
+    .search-container,
+    .user-info,
+    .modal,
+    .photo-upload,
+    .item-actions,
+    .no-print {
+        display: none !important;
+    }
+    
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt !important;
+    }
+    
+    .main-content {
+        margin-left: 0 !important;
+        padding: 0 !important;
+    }
+    
+    .content-area {
+        padding: 0 !important;
+        background: white !important;
+    }
+    
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+        margin: 0 0 20px 0 !important;
+        break-inside: avoid;
+    }
+    
+    .card-header {
+        background: white !important;
+        color: black !important;
+        border-bottom: 2px solid #000 !important;
+    }
+    
+    .table {
+        border-collapse: collapse !important;
+        width: 100% !important;
+    }
+    
+    .table th,
+    .table td {
+        border: 1px solid #000 !important;
+        padding: 8px !important;
+        background: white !important;
+        color: black !important;
+    }
+    
+    .logo {
+        filter: none !important;
+    }
+    
+    .summary-item {
+        border-bottom: 1px solid #000 !important;
+    }
+    
+    a[href]:after {
+        content: " (" attr(href) ")";
+    }
+    
+    @page {
+        margin: 1cm;
+        size: A4;
+    }
+    
+    .page-break {
+        page-break-before: always;
+    }
+    
+    .print-header {
+        text-align: center;
+        margin-bottom: 20px;
+        border-bottom: 3px double #000;
+        padding-bottom: 10px;
+    }
+    
+    .print-header h1 {
+        font-size: 24pt !important;
+        margin: 0 0 5px 0 !important;
+    }
+    
+    .print-header p {
+        margin: 0 0 10px 0 !important;
+        font-size: 10pt !important;
+    }
+    
+    .print-footer {
+        text-align: center;
+        margin-top: 30px;
+        border-top: 1px solid #000;
+        padding-top: 10px;
+        font-size: 9pt !important;
+    }
+    
+    .invoice-details {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        margin: 20px 0;
+        font-size: 10pt !important;
+    }
+    
+    .invoice-totals {
+        margin-top: 30px;
+        font-size: 11pt !important;
+        font-weight: bold;
+    }
+    
+    .terms-conditions {
+        margin-top: 30px;
+        font-size: 9pt !important;
+        border-top: 1px solid #000;
+        padding-top: 10px;
+    }
+}
