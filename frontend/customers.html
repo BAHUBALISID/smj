@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers - Shree Mahakaleshwar Jewellers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo.png" alt="Logo" class="logo">
+            <h2>Mahakaleshwar Jewellers</h2>
+        </div>
+        <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="billing.html" class="menu-item">
+                <i class="fas fa-receipt"></i>
+                <span>Billing</span>
+            </a>
+            <a href="exchange.html" class="menu-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Exchange</span>
+            </a>
+            <a href="pending.html" class="menu-item">
+                <i class="fas fa-clock"></i>
+                <span>Pending Bills</span>
+            </a>
+            <a href="customers.html" class="menu-item active">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+            <a href="inventory.html" class="menu-item">
+                <i class="fas fa-boxes"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="reports.html" class="menu-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reports</span>
+            </a>
+            <a href="admin.html" class="menu-item">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+            </a>
+            <a href="settings.html" class="menu-item">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <p>Professional Billing System</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="search-container">
+                <input type="text" class="search-input" id="customerSearch" placeholder="Search customers...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">A</div>
+                <div class="user-details">
+                    <div class="user-name" id="userName">Admin</div>
+                    <div class="user-role" id="userRole">admin</div>
+                </div>
+                <button class="btn btn-secondary btn-small" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <div class="page-header">
+                <h1 class="page-title"><i class="fas fa-users"></i> Customers</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" id="addCustomerBtn">
+                        <i class="fas fa-plus"></i> Add Customer
+                    </button>
+                    <button class="btn btn-secondary" id="refreshCustomersBtn">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <button class="btn btn-success" id="exportCustomersBtn">
+                        <i class="fas fa-download"></i> Export
+                    </button>
+                </div>
+            </div>
+
+            <!-- Customers Table -->
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title"><i class="fas fa-list"></i> Customer List</h3>
+                    <div class="pagination">
+                        <button class="btn btn-secondary btn-small" id="prevPageBtn" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <span class="pagination-info" id="pageInfo">Page 1</span>
+                        <button class="btn btn-secondary btn-small" id="nextPageBtn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="table-container">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Phone</th>
+                                    <th>Alt Phone</th>
+                                    <th>Date of Birth</th>
+                                    <th>Total Purchases</th>
+                                    <th>Last Purchase</th>
+                                    <th>GST Number</th>
+                                    <th>Joined Date</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="customersTable">
+                                <!-- Data loaded by JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Customer Modal -->
+    <div class="modal" id="customerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="customerModalTitle">Add New Customer</h3>
+                <button class="modal-close" id="closeCustomerModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="customerId">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="modalCustomerName"><i class="fas fa-user"></i> Customer Name *</label>
+                        <input type="text" id="modalCustomerName" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="modalCustomerPhone"><i class="fas fa-phone"></i> Phone Number *</label>
+                        <input type="tel" id="modalCustomerPhone" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="modalCustomerPhoneAlt"><i class="fas fa-phone-alt"></i> Alternate Phone</label>
+                        <input type="tel" id="modalCustomerPhoneAlt">
+                    </div>
+                    <div class="input-group">
+                        <label for="modalCustomerAadhaar"><i class="fas fa-id-card"></i> Aadhaar Number</label>
+                        <input type="text" id="modalCustomerAadhaar">
+                    </div>
+                    <div class="input-group">
+                        <label for="modalCustomerPAN"><i class="fas fa-id-card"></i> PAN Number</label>
+                        <input type="text" id="modalCustomerPAN">
+                    </div>
+                    <div class="input-group">
+                        <label for="modalCustomerGST"><i class="fas fa-receipt"></i> GST Number</label>
+                        <input type="text" id="modalCustomerGST">
+                    </div>
+                    <div class="input-group">
+                        <label for="modalCustomerAddress"><i class="fas fa-map-marker-alt"></i> Address</label>
+                        <textarea id="modalCustomerAddress" rows="2"></textarea>
+                    </div>
+                    <div class="input-group">
+                        <label for="modalCustomerDOB"><i class="fas fa-birthday-cake"></i> Date of Birth</label>
+                        <input type="date" id="modalCustomerDOB">
+                    </div>
+                    <div class="input-group">
+                        <label for="modalCustomerNotes"><i class="fas fa-sticky-note"></i> Notes</label>
+                        <textarea id="modalCustomerNotes" rows="2"></textarea>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                    <button class="btn btn-secondary" id="closeCustomerModalBtn">Cancel</button>
+                    <button class="btn btn-primary" id="saveCustomerBtn">Save Customer</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/customers.js"></script>
+</body>
+</html>
