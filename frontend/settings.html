@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - Shree Mahakaleshwar Jewellers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="dashboard-page">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <img src="assets/logo.png" alt="Logo" class="logo">
+            <h2>Mahakaleshwar Jewellers</h2>
+        </div>
+        <div class="sidebar-menu">
+            <a href="dashboard.html" class="menu-item">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            <a href="billing.html" class="menu-item">
+                <i class="fas fa-receipt"></i>
+                <span>Billing</span>
+            </a>
+            <a href="exchange.html" class="menu-item">
+                <i class="fas fa-exchange-alt"></i>
+                <span>Exchange</span>
+            </a>
+            <a href="pending.html" class="menu-item">
+                <i class="fas fa-clock"></i>
+                <span>Pending Bills</span>
+            </a>
+            <a href="customers.html" class="menu-item">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+            <a href="inventory.html" class="menu-item">
+                <i class="fas fa-boxes"></i>
+                <span>Inventory</span>
+            </a>
+            <a href="reports.html" class="menu-item">
+                <i class="fas fa-chart-bar"></i>
+                <span>Reports</span>
+            </a>
+            <a href="admin.html" class="menu-item">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin</span>
+            </a>
+            <a href="settings.html" class="menu-item active">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+        </div>
+        <div class="sidebar-footer">
+            <p>Professional Billing System</p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Topbar -->
+        <div class="topbar">
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search settings...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="user-info">
+                <div class="user-avatar" id="userAvatar">A</div>
+                <div class="user-details">
+                    <div class="user-name" id="userName">Admin</div>
+                    <div class="user-role" id="userRole">admin</div>
+                </div>
+                <button class="btn btn-secondary btn-small" id="logoutBtn">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <div class="page-header">
+                <h1 class="page-title"><i class="fas fa-cog"></i> Settings</h1>
+                <div class="page-actions">
+                    <button class="btn btn-primary" id="saveSettingsBtn">
+                        <i class="fas fa-save"></i> Save All Settings
+                    </button>
+                    <button class="btn btn-secondary" id="changePasswordBtn">
+                        <i class="fas fa-key"></i> Change Password
+                    </button>
+                </div>
+            </div>
+
+            <!-- Settings Tabs -->
+            <div class="tabs">
+                <button class="tab-btn active" data-tab="business">
+                    <i class="fas fa-building"></i> Business Settings
+                </button>
+                <button class="tab-btn" data-tab="rates">
+                    <i class="fas fa-chart-line"></i> Rate Management
+                </button>
+                <button class="tab-btn" data-tab="gst">
+                    <i class="fas fa-percentage"></i> GST Settings
+                </button>
+                <button class="tab-btn" data-tab="notifications">
+                    <i class="fas fa-bell"></i> Notifications
+                </button>
+                <button class="tab-btn" data-tab="system">
+                    <i class="fas fa-server"></i> System Settings
+                </button>
+            </div>
+
+            <!-- Business Settings -->
+            <div class="tab-content active" id="businessSettings">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-building"></i> Business Information</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="businessName"><i class="fas fa-signature"></i> Business Name *</label>
+                                <input type="text" id="businessName" value="Shree Mahakaleshwar Jewellers" required>
+                            </div>
+                            <div class="input-group">
+                                <label for="businessAddress"><i class="fas fa-map-marker-alt"></i> Business Address *</label>
+                                <textarea id="businessAddress" rows="3" required></textarea>
+                            </div>
+                            <div class="input-group">
+                                <label for="businessPhone"><i class="fas fa-phone"></i> Business Phone</label>
+                                <input type="tel" id="businessPhone">
+                            </div>
+                            <div class="input-group">
+                                <label for="businessEmail"><i class="fas fa-envelope"></i> Business Email</label>
+                                <input type="email" id="businessEmail">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Rate Management -->
+            <div class="tab-content" id="ratesSettings">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-chart-line"></i> Metal Rate Management</h3>
+                        <div>
+                            <button class="btn btn-primary" id="saveRatesBtn">
+                                <i class="fas fa-save"></i> Save Rates
+                            </button>
+                            <button class="btn btn-secondary" id="refreshRatesBtn">
+                                <i class="fas fa-sync-alt"></i> Refresh
+                            </button>
+                            <button class="btn btn-success" id="addCustomMetalBtn">
+                                <i class="fas fa-plus"></i> Add Custom Metal
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-container">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Metal Type</th>
+                                        <th>Purity</th>
+                                        <th>Rate per GM (₹)</th>
+                                        <th>Auto Calculate</th>
+                                        <th>Updated By</th>
+                                        <th>Effective From</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="ratesTable">
+                                    <!-- Data loaded by JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="alert alert-info" style="margin-top: 20px;">
+                            <i class="fas fa-info-circle"></i>
+                            <strong>Note:</strong> Changing 24K Gold or 999 Silver rates will automatically update all related purity rates if auto-calculate is enabled.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GST Settings -->
+            <div class="tab-content" id="gstSettings">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-percentage"></i> GST Configuration</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="gstNumber"><i class="fas fa-receipt"></i> GST Number</label>
+                                <input type="text" id="gstNumber">
+                            </div>
+                            <div class="input-group">
+                                <label for="gstType"><i class="fas fa-exchange-alt"></i> Default GST Type</label>
+                                <select id="gstType">
+                                    <option value="none">No GST</option>
+                                    <option value="intra_state">Intra-State (CGST+SGST)</option>
+                                    <option value="inter_state">Inter-State (IGST)</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="autoCalculateGold">
+                                    Auto-calculate Gold rates
+                                </label>
+                                <p class="text-small">22K, 18K, etc. calculated from 24K rate</p>
+                            </div>
+                            <div class="input-group">
+                                <label style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="autoCalculateSilver">
+                                    Auto-calculate Silver rates
+                                </label>
+                                <p class="text-small">925, 900, etc. calculated from 999 rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Settings -->
+            <div class="tab-content" id="notificationsSettings">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-bell"></i> Notification Settings</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="enableWhatsApp">
+                                    Enable WhatsApp Notifications
+                                </label>
+                                <p class="text-small">Send reminders via WhatsApp</p>
+                            </div>
+                            <div class="input-group">
+                                <label style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="enableSMS">
+                                    Enable SMS Notifications
+                                </label>
+                                <p class="text-small">Send SMS if WhatsApp fails</p>
+                            </div>
+                            <div class="input-group">
+                                <label for="reminderDays"><i class="fas fa-calendar-day"></i> Reminder Frequency (Days)</label>
+                                <select id="reminderDays">
+                                    <option value="1">Daily</option>
+                                    <option value="3">Every 3 Days</option>
+                                    <option value="7" selected>Weekly</option>
+                                    <option value="15">Every 15 Days</option>
+                                    <option value="30">Monthly</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="advanceLockDays"><i class="fas fa-lock"></i> Advance Booking Lock Period</label>
+                                <select id="advanceLockDays">
+                                    <option value="7">7 Days</option>
+                                    <option value="15" selected>15 Days</option>
+                                    <option value="30">30 Days</option>
+                                    <option value="60">60 Days</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Settings -->
+            <div class="tab-content" id="systemSettings">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title"><i class="fas fa-server"></i> System Configuration</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-grid">
+                            <div class="input-group">
+                                <label for="backupFrequency"><i class="fas fa-database"></i> Backup Frequency</label>
+                                <select id="backupFrequency">
+                                    <option value="daily">Daily</option>
+                                    <option value="weekly" selected>Weekly</option>
+                                    <option value="monthly">Monthly</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label for="sessionTimeout"><i class="fas fa-hourglass-half"></i> Session Timeout (Minutes)</label>
+                                <select id="sessionTimeout">
+                                    <option value="15">15 Minutes</option>
+                                    <option value="30">30 Minutes</option>
+                                    <option value="60" selected>60 Minutes</option>
+                                    <option value="120">2 Hours</option>
+                                </select>
+                            </div>
+                            <div class="input-group">
+                                <label style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="enableAuditLog">
+                                    Enable Audit Logging
+                                </label>
+                                <p class="text-small">Log all user actions</p>
+                            </div>
+                            <div class="input-group">
+                                <label style="display: flex; align-items: center; gap: 10px;">
+                                    <input type="checkbox" id="autoLogout">
+                                    Auto Logout on Inactivity
+                                </label>
+                                <p class="text-small">Automatically logout inactive users</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Metal Modal -->
+    <div class="modal" id="customMetalModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="customMetalModalTitle">Add Custom Metal</h3>
+                <button class="modal-close" id="closeCustomMetalModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="customMetalName"><i class="fas fa-gem"></i> Metal Name *</label>
+                        <input type="text" id="customMetalName" required placeholder="e.g., Rose Gold, White Gold">
+                    </div>
+                    <div class="input-group">
+                        <label for="customMetalPurity"><i class="fas fa-percentage"></i> Purity *</label>
+                        <input type="text" id="customMetalPurity" required placeholder="e.g., 750, 585, CUSTOM">
+                    </div>
+                    <div class="input-group">
+                        <label for="customMetalRate"><i class="fas fa-rupee-sign"></i> Rate per GM (₹) *</label>
+                        <input type="number" id="customMetalRate" step="0.01" min="0" required>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                    <button class="btn btn-secondary" id="closeCustomMetalModalBtn">Cancel</button>
+                    <button class="btn btn-primary" id="saveCustomMetalBtn">Add Metal</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div class="modal" id="changePasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Change Password</h3>
+                <button class="modal-close" id="closePasswordModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <label for="currentPassword"><i class="fas fa-key"></i> Current Password *</label>
+                        <input type="password" id="currentPassword" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="newPassword"><i class="fas fa-key"></i> New Password *</label>
+                        <input type="password" id="newPassword" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="confirmPassword"><i class="fas fa-key"></i> Confirm New Password *</label>
+                        <input type="password" id="confirmPassword" required>
+                    </div>
+                </div>
+                <div class="alert alert-info" style="margin-top: 20px;">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Password Requirements:</strong> Minimum 8 characters with at least one uppercase letter, one lowercase letter, one number, and one special character.
+                </div>
+                <div style="display: flex; gap: 10px; justify-content: flex-end; margin-top: 20px;">
+                    <button class="btn btn-secondary" id="closePasswordModalBtn">Cancel</button>
+                    <button class="btn btn-primary" id="savePasswordBtn">Change Password</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/settings.js"></script>
+</body>
+</html>
